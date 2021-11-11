@@ -65,11 +65,11 @@
                                         <td><div class="form-group row">
                                                 <?php $kategori = $riwayat1['kategori_peserta']; ?>
                                                 <?php if ($kategori == 'pelajar'): ?>
-                                                    <h5 class="col-3" ><input type='radio' name='kategori_peserta' id="kategori" value='umum' class="kat" />  Umum</h5>
-                                                    <h5 class="ml-5"><input checked="" type='radio' name='kategori_peserta' id="kategori" value='pelajar' class="kat" />  Pelajar</h5>
+                                                    <h5 class="ml-3" ><input type='radio' name='kategori_peserta' id="kategori" value='umum' class="kat" />  Umum</h5>
+                                                    <h5 class="ml-3"><input checked="" type='radio' name='kategori_peserta' id="kategori" value='pelajar' class="kat" />  Pelajar</h5>
                                                 <?php else : ?>
-                                                    <h5 class="col-3" ><input checked="" type='radio' name='kategori_peserta' id="kategori" value='umum' class="kat" />  Umum</h5>
-                                                    <h5 class="ml-5"><input type='radio' name='kategori_peserta' id="kategori" value='pelajar' class="kat" />  Pelajar</h5>
+                                                    <h5 class="ml-3" ><input checked="" type='radio' name='kategori_peserta' id="kategori" value='umum' class="kat" />  Umum</h5>
+                                                    <h5 class="ml-3"><input type='radio' name='kategori_peserta' id="kategori" value='pelajar' class="kat" />  Pelajar</h5>
                                                 <?php endif; ?>
                                                         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
                                                         <script type="text/javascript">
@@ -90,11 +90,11 @@
                                         <td><div class="form-group row">
                                             <?php $inter = $riwayat1['interaksi'] ?>
                                             <?php if($inter == 'Individu'): ?>
-                                                <h5 class="col-3"><input checked="" type='radio' name="interaksi" id="interaksi" value='Individu' class="int"/>  Individu</h5>
-                                                <h5 class="ml-5"><input type='radio' name="interaksi" id="interaksi" value='Kelompok' class="int"/>  Kelompok</h5>
+                                                <h5 class="ml-3"><input checked="" type='radio' name="interaksi" id="interaksi" value='Individu' class="int"/>  Individu</h5>
+                                                <h5 class="ml-3"><input type='radio' name="interaksi" id="interaksi" value='Kelompok' class="int"/>  Kelompok</h5>
                                             <?php else: ?>
-                                                <h5 class="col-3"><input type='radio' name="interaksi" id="interaksi" value='Individu' class="int"/>  Individu</h5>
-                                                <h5 class="ml-5"><input checked="" type='radio' name="interaksi" id="interaksi" value='Kelompok' class="int"/>  Kelompok</h5>
+                                                <h5 class="ml-3"><input type='radio' name="interaksi" id="interaksi" value='Individu' class="int"/>  Individu</h5>
+                                                <h5 class="ml-3"><input checked="" type='radio' name="interaksi" id="interaksi" value='Kelompok' class="int"/>  Kelompok</h5>
                                             <?php endif; ?>
                                                     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
                                                     <script type="text/javascript">
@@ -144,46 +144,51 @@
                                             
                                                 <table class="table">
                                                     
-                                                       <div  id="itemlist" style=""><input type="text" name="nama_anggota[0]" id="nama_anggota" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
+                                                       <div  id="itemlist" style=""><input type="text" name="nama_anggota[0]" id="nama_anggota[0]" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
                                                        
                                                 </table>
                                                 <button type="button" class="btn btn-success" style="position: static; margin-top: -10px;" onclick="additem()"><i class="fas fa-plus"></i> Tambah Anggota</button>              
 
                                             <script>
+                                                var Limit = 4;
                                                 var i = 1;
                                                 function additem() {
-                                                    var itemlist = document.getElementById('itemlist');
-                                                    
+                                                var itemlist = document.getElementById('itemlist');
+                                                if (itemlist.children.length <= Limit) {
                                     
-                                                    var row = document.createElement('div');    
-                                                    var anggota = document.createElement('td');
-                                                    var aksi = document.createElement('td');
+                                                        var row = document.createElement('div');    
+                                                        var anggota = document.createElement('td');
+                                                        var aksi = document.createElement('td');
 
-                                    
-                                                    itemlist.appendChild(row);
-                                                    row.appendChild(anggota);
-                                                    row.appendChild(aksi);
+                                        
+                                                        itemlist.appendChild(row);
+                                                        row.appendChild(anggota);
+                                                        row.appendChild(aksi);
 
-                                    
-                                                    var nama_anggota = document.createElement('input');
-                                                    nama_anggota.style.marginLeft="-13px";
-                                                    nama_anggota.style.position="";
-                                                    nama_anggota.style.width="400px";
-                                                    nama_anggota.style.backgroundColor="whitesmoke";
-                                                    nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
-                                                    nama_anggota.setAttribute('class', 'form-control');
+                                        
+                                                        var nama_anggota = document.createElement('input');
+                                                        nama_anggota.style.marginLeft="-13px";
+                                                        nama_anggota.style.position="";
+                                                        nama_anggota.style.width="400px";
+                                                        nama_anggota.style.backgroundColor="whitesmoke";
+                                                        nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
+                                                        nama_anggota.setAttribute('id', 'nama_anggota[' + i + ']');
+                                                        nama_anggota.setAttribute('class', 'form-control');
 
-                                                    var hapus = document.createElement('span');
-                                                    anggota.appendChild(nama_anggota);
-                                                    aksi.appendChild(hapus);
+                                                        var hapus = document.createElement('span');
+                                                        anggota.appendChild(nama_anggota);
+                                                        aksi.appendChild(hapus);
 
-                                                    hapus.innerHTML = '<div style=";"><button class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
-                                    
-                                                    hapus.onclick = function () {
-                                                        row.parentNode.removeChild(row);
-                                                    };
+                                                        hapus.innerHTML = '<div style=";"><button class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
+                                        
+                                                        hapus.onclick = function () {
+                                                            row.parentNode.removeChild(row);
+                                                        };
 
-                                                    i++;
+                                                        i++;
+                                                    }else{
+                                                        swal("Informasi","Jumlah anggota tim maksimal 5 orang!","info");
+                                                    }
                                                 }
                                             </script>
                                            </td>
@@ -201,47 +206,58 @@
                                                 <a data-toggle="modal" data-target="#update<?php echo $anggota['id'] ?>" class="btn btn-warning" type="submit" style="height: 38px; margin-left: 32px;"><i class="fas fa-pen"></i></a>
                                                 <?php endforeach;  ?>
                                             </div>
-
+                                            
                                             <div id="itemlist" ></div>
-
-                                            <button type="button" class="btn btn-success mt-2" style="position: static; margin-top: -10px;" onclick="additem()"><i class="fas fa-plus"></i> Tambah Anggota</button>  
+                                            <?php if (count($nama_anggota) <= 4): ?>
+                                                <button type="button" class="btn btn-success mt-2" style="position: static; margin-top: -10px;" onclick="additem()" data='<?php echo count($nama_anggota) ?>'><i class="fas fa-plus"></i> Tambah Anggota</button> 
+                                            <?php else: ?>
+                                                <button disabled type="button" class="btn btn-success mt-2" style="position: static; margin-top: -10px;" onclick="additem()" data='<?php echo count($nama_anggota) ?>'><i class="fas fa-plus"></i> Tambah Anggota</button> 
+                                            <?php endif; ?>
+                                            <!-- <button type="button" class="btn btn-success mt-2" style="position: static; margin-top: -10px;" onclick="additem()" data='<?php echo count($nama_anggota) ?>'><i class="fas fa-plus"></i> Tambah Anggota</button>  --> 
 
                                         <script>
                                             var i = 1;
                                             function additem() {
+                                                var data = event.target.getAttribute("data");
+                                                var Limit = 4 - data;
+                                                // alert(Limit)
                                                 var itemlist = document.getElementById('itemlist');
-                                                
+                                                if (itemlist.children.length <= Limit) {
                                 
-                                                var row = document.createElement('tr');    
-                                                var anggota = document.createElement('td');
-                                                var aksi = document.createElement('td');
+                                                    var row = document.createElement('tr');    
+                                                    var anggota = document.createElement('td');
+                                                    var aksi = document.createElement('td');
 
-                                
-                                                itemlist.appendChild(row);
+                                    
+                                                    itemlist.appendChild(row);
 
-                                                row.appendChild(anggota);
-                                                row.appendChild(aksi);
+                                                    row.appendChild(anggota);
+                                                    row.appendChild(aksi);
 
-                                
-                                                var nama_anggota = document.createElement('input');
-                                                nama_anggota.style.marginLeft="-12px";
-                                                nama_anggota.style.position="";
-                                                nama_anggota.style.width="400px";
-                                                nama_anggota.style.backgroundColor="whitesmoke";
-                                                nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
-                                                nama_anggota.setAttribute('class', 'form-control');
+                                    
+                                                    var nama_anggota = document.createElement('input');
+                                                    nama_anggota.style.marginLeft="-12px";
+                                                    nama_anggota.style.position="";
+                                                    nama_anggota.style.width="400px";
+                                                    nama_anggota.style.backgroundColor="whitesmoke";
+                                                    nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
+                                                    nama_anggota.setAttribute('id', 'nama_anggota[' + i + ']');
+                                                    nama_anggota.setAttribute('class', 'form-control');
 
-                                                var hapus = document.createElement('span');
-                                                anggota.appendChild(nama_anggota);
-                                                aksi.appendChild(hapus);
+                                                    var hapus = document.createElement('span');
+                                                    anggota.appendChild(nama_anggota);
+                                                    aksi.appendChild(hapus);
 
-                                                hapus.innerHTML = '<div style=";"><button type="button" class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
-                                
-                                                hapus.onclick = function () {
-                                                    row.parentNode.removeChild(row);
-                                                };
+                                                    hapus.innerHTML = '<div style=";"><button type="button" class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
+                                    
+                                                    hapus.onclick = function () {
+                                                        row.parentNode.removeChild(row);
+                                                    };
 
-                                                i++;
+                                                    i++;
+                                                }else{
+                                                    swal("Informasi","Jumlah anggota tim maksimal 5 orang!","info");
+                                                }
                                             }
                                         </script>
                                         </td>
@@ -295,7 +311,7 @@
                                 <button class="btn btn-danger" onclick="window.location.href='<?php echo base_url('peserta/riwayat/') ?>'" type="button"><strong>Batal</strong></button>
                             </td> 
                             <td align="center" width="50%">
-                                <button class="btn btn-success" type="button" onclick="cek_data_form1()"><strong>Selanjutnya</strong></button>
+                                <button class="btn btn-success" type="button" onclick="cek_tim()"><strong>Selanjutnya</strong></button>
                             </td>
                         </table>
                     </div>
@@ -537,6 +553,65 @@
     {
            $('#Modal_KTP').modal('show');
     };
+
+    function cek_tim(){
+        var interaksi = $("input[name='interaksi']:checked").val();
+        if(interaksi == "Kelompok"){
+            var data = document.getElementById("nama_anggota[0]"); if(data) { if (data.value == "") { 
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data1 = document.getElementById("nama_anggota[1]"); if(data1) { if (data1.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data2 = document.getElementById("nama_anggota[2]"); if(data2) { if (data2.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data3 = document.getElementById("nama_anggota[3]"); if(data3) { if (data3.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data4 = document.getElementById("nama_anggota[4]"); if(data4) { if (data4.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data5 = document.getElementById("nama_anggota[5]"); if(data5) { if (data5.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data6 = document.getElementById("nama_anggota[6]"); if(data6) { if (data6.value == "") { 
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data7 = document.getElementById("nama_anggota[7]"); if(data7) { if (data7.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data8 = document.getElementById("nama_anggota[8]"); if(data8) { if (data8.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data9 = document.getElementById("nama_anggota[9]"); if(data9) { if (data9.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data10 = document.getElementById("nama_anggota[10]"); if(data10) { if (data10.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data11 = document.getElementById("nama_anggota[11]"); if(data11) { if (data11.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data12 = document.getElementById("nama_anggota[12]"); if(data12) { if (data12.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data13 = document.getElementById("nama_anggota[13]"); if(data13) { if (data13.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data14 = document.getElementById("nama_anggota[14]"); if(data14) { if (data14.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data15 = document.getElementById("nama_anggota[15]"); if(data15) { if (data15.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            //alert("lanjut form 2");
+            return cek_data_form1();
+        }else{
+            return cek_data_form1();
+        }
+    }
+
     function cek_data_form1(){
 
         if(document.getElementById("ktp").files.length == 0){
@@ -551,36 +626,36 @@
                         var kategori = $("input[name='kategori_peserta']:checked").val();
                         if (kategori == 'umum')
                         {
-                           var interaksi = $("input[name='interaksi']:checked").val();
-                               if (interaksi == 'Individu')
-                               {
+                           // var interaksi = $("input[name='interaksi']:checked").val();
+                           //     if (interaksi == 'Individu')
+                           //     {
                                     document.getElementById("FormDataSemua").submit();
-                               }else{
-                                var nama_anggota = document.getElementById("nama_anggota").value;
-                                    if (nama_anggota != "") 
-                                    {
-                                        document.getElementById("FormDataSemua").submit();
-                                    }else{
-                                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                    }
-                               }
+                               // }else{
+                               //  var nama_anggota = document.getElementById("nama_anggota").value;
+                               //      if (nama_anggota != "") 
+                               //      {
+                               //          document.getElementById("FormDataSemua").submit();
+                               //      }else{
+                               //          swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                               //      }
+                               // }
                         }else{
                             var asal_sekolah    = document.getElementById("asal_sekolah").value;
                             if (asal_sekolah != "")
                             {
-                                var interaksi = $("input[name='interaksi']:checked").val();
-                                    if (interaksi == 'Individu')
-                                    {
+                                // var interaksi = $("input[name='interaksi']:checked").val();
+                                //     if (interaksi == 'Individu')
+                                //     {
                                         document.getElementById("FormDataSemua").submit();
-                                    }else{
-                                    var nama_anggota = document.getElementById("nama_anggota").value;
-                                        if (nama_anggota != "") 
-                                        {
-                                            document.getElementById("FormDataSemua").submit();
-                                        }else{
-                                            swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                        }
-                                   }
+                                   //  }else{
+                                   //  var nama_anggota = document.getElementById("nama_anggota").value;
+                                   //      if (nama_anggota != "") 
+                                   //      {
+                                   //          document.getElementById("FormDataSemua").submit();
+                                   //      }else{
+                                   //          swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                   //      }
+                                   // }
                             }else{
                                 swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
                             }
@@ -610,36 +685,36 @@
                             var kategori = $("input[name='kategori_peserta']:checked").val();
                             if (kategori == 'umum')
                             {
-                               var interaksi = $("input[name='interaksi']:checked").val();
-                                   if (interaksi == 'Individu')
-                                   {
+                               // var interaksi = $("input[name='interaksi']:checked").val();
+                               //     if (interaksi == 'Individu')
+                               //     {
                                         document.getElementById("FormDataSemua").submit();
-                                   }else{
-                                    var nama_anggota = document.getElementById("nama_anggota").value;
-                                        if (nama_anggota != "") 
-                                        {
-                                            document.getElementById("FormDataSemua").submit();
-                                        }else{
-                                            swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                        }
-                                   }
+                                   // }else{
+                                   //  var nama_anggota = document.getElementById("nama_anggota").value;
+                                   //      if (nama_anggota != "") 
+                                   //      {
+                                   //          document.getElementById("FormDataSemua").submit();
+                                   //      }else{
+                                   //          swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                   //      }
+                                   // }
                             }else{
                                 var asal_sekolah    = document.getElementById("asal_sekolah").value;
                                 if (asal_sekolah != "")
                                 {
-                                    var interaksi = $("input[name='interaksi']:checked").val();
-                                        if (interaksi == 'Individu')
-                                        {
+                                    // var interaksi = $("input[name='interaksi']:checked").val();
+                                    //     if (interaksi == 'Individu')
+                                    //     {
                                             document.getElementById("FormDataSemua").submit();
-                                        }else{
-                                        var nama_anggota = document.getElementById("nama_anggota").value;
-                                            if (nama_anggota != "") 
-                                            {
-                                                document.getElementById("FormDataSemua").submit();
-                                            }else{
-                                                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                            }
-                                       }
+                                       //  }else{
+                                       //  var nama_anggota = document.getElementById("nama_anggota").value;
+                                       //      if (nama_anggota != "") 
+                                       //      {
+                                       //          document.getElementById("FormDataSemua").submit();
+                                       //      }else{
+                                       //          swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                       //      }
+                                       // }
                                 }else{
                                     swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
                                 }
