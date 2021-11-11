@@ -226,7 +226,7 @@
                                         
                                             <table class="table">
                                                 
-                                                   <div  id="itemlist" style=""><input type="text" name="nama_anggota[]" id="nama_anggota" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
+                                                   <div  id="itemlist" style=""><input type="text" name="nama_anggota[]" id="nama_anggota[0]" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
                                                    
                                             </table>
                                             <button type="button" class="btn btn-success" style="position: static; margin-top: -10px;" onclick="additem()"><i class="fas fa-plus"></i> Tambah Anggota</button>
@@ -255,6 +255,7 @@
                                                     nama_anggota.style.width="400px";
                                                     nama_anggota.style.backgroundColor="whitesmoke";
                                                     nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
+                                                    nama_anggota.setAttribute('id', 'nama_anggota[' + i + ']');
                                                     nama_anggota.setAttribute('class', 'form-control');
 
                                                     var hapus = document.createElement('span');
@@ -393,7 +394,7 @@
                         <td align="center" width="20%"></td> 
                         <td align="center" width="20%"></td>
                         <td align="center" width="20%">
-                            <button class="btn btn-warning" type="button" onclick="form2()"><h5 style="margin-top:5px;"><strong>Selanjutnya</strong></h5 style="margin-top:5px;"></button>
+                            <button class="btn btn-warning" type="button" onclick="cek_tim()"><h5 style="margin-top:5px;"><strong>Selanjutnya</strong></h5 style="margin-top:5px;"></button>
                         </td>
                         <td align="center" width="20%"></td>
                     </table>
@@ -441,6 +442,63 @@
         $('#target333').hide();
         document.getElementById("inovasi").focus();
     }
+    function cek_tim(){
+        var interaksi = $("input[name='interaksi']:checked").val();
+        if(interaksi == "Kelompok"){
+            var data = document.getElementById("nama_anggota[0]"); if(data) { if (data.value == "") { 
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data1 = document.getElementById("nama_anggota[1]"); if(data1) { if (data1.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data2 = document.getElementById("nama_anggota[2]"); if(data2) { if (data2.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data3 = document.getElementById("nama_anggota[3]"); if(data3) { if (data3.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data4 = document.getElementById("nama_anggota[4]"); if(data4) { if (data4.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data5 = document.getElementById("nama_anggota[5]"); if(data5) { if (data5.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data6 = document.getElementById("nama_anggota[6]"); if(data6) { if (data6.value == "") { 
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data7 = document.getElementById("nama_anggota[7]"); if(data7) { if (data7.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data8 = document.getElementById("nama_anggota[8]"); if(data8) { if (data8.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data9 = document.getElementById("nama_anggota[9]"); if(data9) { if (data9.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data10 = document.getElementById("nama_anggota[10]"); if(data10) { if (data10.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data11 = document.getElementById("nama_anggota[11]"); if(data11) { if (data11.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data12 = document.getElementById("nama_anggota[12]"); if(data12) { if (data12.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data13 = document.getElementById("nama_anggota[13]"); if(data13) { if (data13.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data14 = document.getElementById("nama_anggota[14]"); if(data14) { if (data14.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            var data15 = document.getElementById("nama_anggota[15]"); if(data15) { if (data15.value == "") {
+                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                return false;} }
+            //alert("lanjut form 2");
+            return form2();
+        }else{
+            return form2();
+        }
+    }
     function form2(){
 
         if(document.getElementById("ktp").files.length == 0){
@@ -481,21 +539,16 @@
                                     $('#target333').hide();
                                     document.getElementById("latar").focus();
                                 }else if(interaksi == "Kelompok"){
-                                    var nama_anggota = document.getElementById("nama_anggota").value;
-                                   if (nama_anggota !="") {
-                                        $('#target1').hide();
-                                        $('#target2').show();
-                                        $('#target3').hide();
-                                        $('#target1_1').hide();
-                                        $('#target2_2').show();
-                                        $('#target3_3').hide();
-                                        $('#target111').hide();
-                                        $('#target222').show();
-                                        $('#target333').hide();
-                                        document.getElementById("latar").focus();
-                                    }else{
-                                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                    }
+                                    $('#target1').hide();
+                                    $('#target2').show();
+                                    $('#target3').hide();
+                                    $('#target1_1').hide();
+                                    $('#target2_2').show();
+                                    $('#target3_3').hide();
+                                    $('#target111').hide();
+                                    $('#target222').show();
+                                    $('#target333').hide();
+                                    document.getElementById("latar").focus();
                                 }
                             }else if(kategori == "pelajar"){
                                 var sekolah  = document.getElementById("asal_sekolah").value;
@@ -515,21 +568,16 @@
                                             $('#target333').hide();
                                             document.getElementById("latar").focus();
                                         }else if(interaksi == "Kelompok"){
-                                            var nama_anggota = document.getElementById("nama_anggota").value;
-                                            if (nama_anggota !="") {
-                                                $('#target1').hide();
-                                                $('#target2').show();
-                                                $('#target3').hide();
-                                                $('#target1_1').hide();
-                                                $('#target2_2').show();
-                                                $('#target3_3').hide();
-                                                $('#target111').hide();
-                                                $('#target222').show();
-                                                $('#target333').hide();
-                                                document.getElementById("latar").focus();
-                                            }else{
-                                                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                                            }
+                                            $('#target1').hide();
+                                            $('#target2').show();
+                                            $('#target3').hide();
+                                            $('#target1_1').hide();
+                                            $('#target2_2').show();
+                                            $('#target3_3').hide();
+                                            $('#target111').hide();
+                                            $('#target222').show();
+                                            $('#target333').hide();
+                                            document.getElementById("latar").focus();
                                         }
                                     }else{
                                         swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
