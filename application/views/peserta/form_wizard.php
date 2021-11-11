@@ -233,40 +233,43 @@
                                         
 
                                         <script>
+                                            var Limit = 4;
                                             var i = 1;
                                             function additem() {
                                                 var itemlist = document.getElementById('itemlist');
-                                                
-                                //                membuat element
-                                                var row = document.createElement('div');    
-                                                var anggota = document.createElement('td');
-                                                var aksi = document.createElement('td');
+                                                if (itemlist.children.length <= Limit) {
+                                    //                membuat element
+                                                    var row = document.createElement('div');    
+                                                    var anggota = document.createElement('td');
+                                                    var aksi = document.createElement('td');
 
-                                //                meng append element
-                                                itemlist.appendChild(row);
-                                                row.appendChild(anggota);
-                                                row.appendChild(aksi);
+                                    //                meng append element
+                                                    itemlist.appendChild(row);
+                                                    row.appendChild(anggota);
+                                                    row.appendChild(aksi);
 
-                                //                membuat element input
-                                                var nama_anggota = document.createElement('input');
-                                                nama_anggota.style.marginLeft="-13px";
-                                                nama_anggota.style.position="";
-                                                nama_anggota.style.width="400px";
-                                                nama_anggota.style.backgroundColor="whitesmoke";
-                                                nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
-                                                nama_anggota.setAttribute('class', 'form-control');
+                                    //                membuat element input
+                                                    var nama_anggota = document.createElement('input');
+                                                    nama_anggota.style.marginLeft="-13px";
+                                                    nama_anggota.style.position="";
+                                                    nama_anggota.style.width="400px";
+                                                    nama_anggota.style.backgroundColor="whitesmoke";
+                                                    nama_anggota.setAttribute('name', 'nama_anggota[' + i + ']');
+                                                    nama_anggota.setAttribute('class', 'form-control');
 
-                                                var hapus = document.createElement('span');
-                                                anggota.appendChild(nama_anggota);
-                                                aksi.appendChild(hapus);
+                                                    var hapus = document.createElement('span');
+                                                    anggota.appendChild(nama_anggota);
+                                                    aksi.appendChild(hapus);
 
-                                                hapus.innerHTML = '<div style=";"><button class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
-                                //                Aksi Delete
-                                                hapus.onclick = function () {
-                                                    row.parentNode.removeChild(row);
-                                                };
-
-                                                i++;
+                                                    hapus.innerHTML = '<div style=";"><button class="btn btn-sm btn-danger" style="height:38px; width:38px;"><i class="fas fa-trash"></i></button></div>';
+                                    //                Aksi Delete
+                                                    hapus.onclick = function () {
+                                                        row.parentNode.removeChild(row);
+                                                    };
+                                                    i++;
+                                                }else{
+                                                    swal("Informasi","Jumlah anggota tim maksimal 5 orang!","info");
+                                                }
                                             }
                                         </script>
                                        </td>

@@ -252,28 +252,119 @@
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
 <script type="text/javascript">
     function cek_data_form3(){
-        // Surat Pernyataan
         if(document.getElementById("surat").files.length == 0){
-            var link = document.getElementById("link").value;
-            if (link !="") {
-                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                    '(\\#[-a-z\\d_]*)?$','i');
-                if(!pattern.test(link)) {
-                    document.getElementById("link").focus();
-                    swal("Peringatan","Url yang anda masukkan tidak valid","warning")
-                }else{
-                    document.getElementById("form3").submit();
-                    //alert("submit kosong surat");
+            if (document.getElementById("jurnal").files.length == 0){
+                if (document.getElementById("gambar").files.length == 0) {
+                    var link = document.getElementById("link").value;
+                        if (link !="") { // cek link
+                            var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                '(\\#[-a-z\\d_]*)?$','i');
+                            if(!pattern.test(link)) {
+                                document.getElementById("link").focus();
+                                swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                            }else{
+                                document.getElementById("form3").submit();
+                            }
+                        }else{
+                            document.getElementById("link").focus();
+                            swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                        }
+                }else{//cek gambar
+                    if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                        document.getElementById("gambar").focus();
+                        swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                    }else{
+                        if(document.getElementById("gambar").files[0].size>5242880){
+                            document.getElementById("gambar").focus();
+                            swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                        }else{
+                            var link = document.getElementById("link").value;
+                            if (link !="") {// cek link
+                                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                    '(\\#[-a-z\\d_]*)?$','i');
+                                if(!pattern.test(link)) {
+                                    document.getElementById("link").focus();
+                                    swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                }else{
+                                    document.getElementById("form3").submit();
+                                }
+                            }else{
+                                document.getElementById("link").focus();
+                                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                            }   
+                        }
+                    }
                 }
-            }else{
-                document.getElementById("link").focus();
-                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-            } 
-        }else{
+            }else{ // cek jurnal
+                if(document.getElementById("jurnal").files[0].type.indexOf("application/pdf")==-1){
+                    document.getElementById("jurnal").focus();
+                    swal("Informasi","Format file dokumen yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                }else{
+                    if(document.getElementById("jurnal").files[0].size>5242880){
+                        document.getElementById("jurnal").focus();
+                        swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                    }else{
+                        if (document.getElementById("gambar").files.length == 0) {
+                            var link = document.getElementById("link").value;
+                                if (link !="") { // cek link
+                                    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                        '(\\#[-a-z\\d_]*)?$','i');
+                                    if(!pattern.test(link)) {
+                                        document.getElementById("link").focus();
+                                        swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                    }else{
+                                        document.getElementById("form3").submit();
+                                    }
+                                }else{
+                                    document.getElementById("link").focus();
+                                    swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                }
+                        }else{ // cek gambar
+                            if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                                document.getElementById("gambar").focus();
+                                swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                            }else{
+                                if(document.getElementById("gambar").files[0].size>5242880){
+                                    document.getElementById("gambar").focus();
+                                    swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                                }else{
+                                    var link = document.getElementById("link").value;
+                                    if (link !="") { // cek link
+                                        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                            '(\\#[-a-z\\d_]*)?$','i');
+                                        if(!pattern.test(link)) {
+                                            document.getElementById("link").focus();
+                                            swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                        }else{
+                                            document.getElementById("form3").submit();
+                                        }
+                                    }else{
+                                        document.getElementById("link").focus();
+                                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                    }   
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }else{ // cek surat
             if(document.getElementById("surat").files[0].type.indexOf("application/pdf")==-1){
                 document.getElementById("surat").focus();
                 swal("Informasi","Format file surat pernyataan yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
@@ -281,132 +372,278 @@
                 if(document.getElementById("surat").files[0].size>5242880){
                     document.getElementById("surat").focus();
                     swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
-                }else{ 
-                    var link = document.getElementById("link").value;
-                    if (link !="") {
-                        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                            '(\\#[-a-z\\d_]*)?$','i');
-                        if(!pattern.test(link)) {
-                            document.getElementById("link").focus();
-                            swal("Peringatan","Url yang anda masukkan tidak valid","warning")
-                        }else{
-                            document.getElementById("form3").submit();
-                            //alert("submit isi surat");
-                        }
-                    }else{
-                        document.getElementById("link").focus();
-                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                    }                      
-                }
-            }
-        }
-
-        // Dokumen/Jurnal
-        if(document.getElementById("jurnal").files.length == 0){
-            var link = document.getElementById("link").value;
-            if (link !="") {
-                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                    '(\\#[-a-z\\d_]*)?$','i');
-                if(!pattern.test(link)) {
-                    document.getElementById("link").focus();
-                    swal("Peringatan","Url yang anda masukkan tidak valid","warning")
                 }else{
-                    document.getElementById("form3").submit();
-                    //alert("submit kosong dokumen");
-                }
-            }else{
-                document.getElementById("link").focus();
-                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-            }
-        }else{
-            if(document.getElementById("jurnal").files[0].type.indexOf("application/pdf")==-1){
-                document.getElementById("jurnal").focus();
-                swal("Informasi","Format file dokumen yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
-            }else{
-                if(document.getElementById("jurnal").files[0].size>5242880){
-                    document.getElementById("jurnal").focus();
-                    swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
-                }else{
-                    var link = document.getElementById("link").value;
-                    if (link !="") {
-                        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                            '(\\#[-a-z\\d_]*)?$','i');
-                        if(!pattern.test(link)) {
-                            document.getElementById("link").focus();
-                            swal("Peringatan","Url yang anda masukkan tidak valid","warning")
-                        }else{
-                            document.getElementById("form3").submit();
-                            //alert("submit isi dokumen");
+                    if (document.getElementById("jurnal").files.length == 0){
+                        if (document.getElementById("gambar").files.length == 0) {
+                            var link = document.getElementById("link").value;
+                                if (link !="") { // cek link
+                                    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                        '(\\#[-a-z\\d_]*)?$','i');
+                                    if(!pattern.test(link)) {
+                                        document.getElementById("link").focus();
+                                        swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                    }else{
+                                        document.getElementById("form3").submit();
+                                    }
+                                }else{
+                                    document.getElementById("link").focus();
+                                    swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                }
+                        }else{//cek gambar
+                            if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                                document.getElementById("gambar").focus();
+                                swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                            }else{
+                                if(document.getElementById("gambar").files[0].size>5242880){
+                                    document.getElementById("gambar").focus();
+                                    swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                                }else{
+                                    var link = document.getElementById("link").value;
+                                    if (link !="") {// cek link
+                                        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                            '(\\#[-a-z\\d_]*)?$','i');
+                                        if(!pattern.test(link)) {
+                                            document.getElementById("link").focus();
+                                            swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                        }else{
+                                            document.getElementById("form3").submit();
+                                        }
+                                    }else{
+                                        document.getElementById("link").focus();
+                                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                    }   
+                                }
+                            }
                         }
-                    }else{
-                        document.getElementById("link").focus();
-                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                    }else{ // cek jurnal
+                        if(document.getElementById("jurnal").files[0].type.indexOf("application/pdf")==-1){
+                            document.getElementById("jurnal").focus();
+                            swal("Informasi","Format file dokumen yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                        }else{
+                            if(document.getElementById("jurnal").files[0].size>5242880){
+                                document.getElementById("jurnal").focus();
+                                swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                            }else{
+                                if (document.getElementById("gambar").files.length == 0) {
+                                    var link = document.getElementById("link").value;
+                                        if (link !="") { // cek link
+                                            var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                                '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                                '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                                '(\\#[-a-z\\d_]*)?$','i');
+                                            if(!pattern.test(link)) {
+                                                document.getElementById("link").focus();
+                                                swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                            }else{
+                                                document.getElementById("form3").submit();
+                                            }
+                                        }else{
+                                            document.getElementById("link").focus();
+                                            swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                        }
+                                }else{ // cek gambar
+                                    if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                                        document.getElementById("gambar").focus();
+                                        swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+                                    }else{
+                                        if(document.getElementById("gambar").files[0].size>5242880){
+                                            document.getElementById("gambar").focus();
+                                            swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+                                        }else{
+                                            var link = document.getElementById("link").value;
+                                            if (link !="") { // cek link
+                                                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                                                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                                                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                                                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                                                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                                                    '(\\#[-a-z\\d_]*)?$','i');
+                                                if(!pattern.test(link)) {
+                                                    document.getElementById("link").focus();
+                                                    swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+                                                }else{
+                                                    document.getElementById("form3").submit();
+                                                }
+                                            }else{
+                                                document.getElementById("link").focus();
+                                                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+                                            }   
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
 
-         // Gambar Usulan
-        if(document.getElementById("gambar").files.length == 0){
-            var link = document.getElementById("link").value;
-            if (link !="") {
-                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                    '(\\#[-a-z\\d_]*)?$','i');
-                if(!pattern.test(link)) {
-                    document.getElementById("link").focus();
-                    swal("Peringatan","Url yang anda masukkan tidak valid","warning")
-                }else{
-                    document.getElementById("form3").submit();
-                }
-            }else{
-                document.getElementById("link").focus();
-                swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-            } 
-        }else{
-            if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
-                document.getElementById("gambar").focus();
-                swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
-            }else{
-                if(document.getElementById("gambar").files[0].size>5242880){
-                    document.getElementById("gambar").focus();
-                    swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
-                }else{
-                      var link = document.getElementById("link").value;
-                    if (link !="") {
-                        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-                            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-                            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-                            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-                            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-                            '(\\#[-a-z\\d_]*)?$','i');
-                        if(!pattern.test(link)) {
-                            document.getElementById("link").focus();
-                            swal("Peringatan","Url yang anda masukkan tidak valid","warning")
-                        }else{
-                            document.getElementById("form3").submit();
-                        }
-                    }else{
-                        document.getElementById("link").focus();
-                        swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
-                    } 
-                }
-            }
-        }
+
+        // Surat Pernyataan
+        // if(document.getElementById("surat").files.length == 0){
+        //     var link = document.getElementById("link").value;
+        //     if (link !="") {
+        //         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //             '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //             '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //             '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //             '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //             '(\\#[-a-z\\d_]*)?$','i');
+        //         if(!pattern.test(link)) {
+        //             document.getElementById("link").focus();
+        //             swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //         }else{
+        //             document.getElementById("form3").submit();
+        //             //alert("submit kosong surat");
+        //         }
+        //     }else{
+        //         document.getElementById("link").focus();
+        //         swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //     } 
+        // }else{
+        //     if(document.getElementById("surat").files[0].type.indexOf("application/pdf")==-1){
+        //         document.getElementById("surat").focus();
+        //         swal("Informasi","Format file surat pernyataan yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+        //     }else{
+        //         if(document.getElementById("surat").files[0].size>5242880){
+        //             document.getElementById("surat").focus();
+        //             swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+        //         }else{ 
+        //             var link = document.getElementById("link").value;
+        //             if (link !="") {
+        //                 var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //                     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //                     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //                     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //                     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //                     '(\\#[-a-z\\d_]*)?$','i');
+        //                 if(!pattern.test(link)) {
+        //                     document.getElementById("link").focus();
+        //                     swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //                 }else{
+        //                     document.getElementById("form3").submit();
+        //                     //alert("submit isi surat");
+        //                 }
+        //             }else{
+        //                 document.getElementById("link").focus();
+        //                 swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //             }                      
+        //         }
+        //     }
+        // }
+
+        // // Dokumen/Jurnal
+        // if(document.getElementById("jurnal").files.length == 0){
+        //     var link = document.getElementById("link").value;
+        //     if (link !="") {
+        //         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //             '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //             '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //             '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //             '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //             '(\\#[-a-z\\d_]*)?$','i');
+        //         if(!pattern.test(link)) {
+        //             document.getElementById("link").focus();
+        //             swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //         }else{
+        //             document.getElementById("form3").submit();
+        //             //alert("submit kosong dokumen");
+        //         }
+        //     }else{
+        //         document.getElementById("link").focus();
+        //         swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //     }
+        // }else{
+        //     if(document.getElementById("jurnal").files[0].type.indexOf("application/pdf")==-1){
+        //         document.getElementById("jurnal").focus();
+        //         swal("Informasi","Format file dokumen yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+        //     }else{
+        //         if(document.getElementById("jurnal").files[0].size>5242880){
+        //             document.getElementById("jurnal").focus();
+        //             swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+        //         }else{
+        //             var link = document.getElementById("link").value;
+        //             if (link !="") {
+        //                 var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //                     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //                     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //                     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //                     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //                     '(\\#[-a-z\\d_]*)?$','i');
+        //                 if(!pattern.test(link)) {
+        //                     document.getElementById("link").focus();
+        //                     swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //                 }else{
+        //                     document.getElementById("form3").submit();
+        //                     //alert("submit isi dokumen");
+        //                 }
+        //             }else{
+        //                 document.getElementById("link").focus();
+        //                 swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //             }
+        //         }
+        //     }
+        // }
+
+        //  // Gambar Usulan
+        // if(document.getElementById("gambar").files.length == 0){
+        //     var link = document.getElementById("link").value;
+        //     if (link !="") {
+        //         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //             '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //             '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //             '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //             '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //             '(\\#[-a-z\\d_]*)?$','i');
+        //         if(!pattern.test(link)) {
+        //             document.getElementById("link").focus();
+        //             swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //         }else{
+        //             document.getElementById("form3").submit();
+        //         }
+        //     }else{
+        //         document.getElementById("link").focus();
+        //         swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //     } 
+        // }else{
+        //     if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+        //         document.getElementById("gambar").focus();
+        //         swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
+        //     }else{
+        //         if(document.getElementById("gambar").files[0].size>5242880){
+        //             document.getElementById("gambar").focus();
+        //             swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
+        //         }else{
+        //               var link = document.getElementById("link").value;
+        //             if (link !="") {
+        //                 var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        //                     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        //                     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        //                     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        //                     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        //                     '(\\#[-a-z\\d_]*)?$','i');
+        //                 if(!pattern.test(link)) {
+        //                     document.getElementById("link").focus();
+        //                     swal("Peringatan","Url yang anda masukkan tidak valid","warning")
+        //                 }else{
+        //                     document.getElementById("form3").submit();
+        //                 }
+        //             }else{
+        //                 document.getElementById("link").focus();
+        //                 swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
+        //             } 
+        //         }
+        //     }
+        // }
     }
 </script>

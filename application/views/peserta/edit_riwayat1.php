@@ -55,11 +55,11 @@
                                     </tr>
                                     <tr hidden="hidden">
                                         <td width="25%"><h5 style="margin-top:6px;"><strong>id usulan</strong></h5></td>
-                                        <td><input type="text" name="id" id="inovasi" style="width: 100%;background:whitesmoke;" class="form-control" value="<?php echo $riwayat1['id'] ?>"></td>
+                                        <td><input type="text" name="id" id="id" style="width: 100%;background:whitesmoke;" class="form-control" value="<?php echo $riwayat1['id'] ?>"></td>
                                     </tr>
                                     <tr>
                                         <td width="25%"><h5 style="margin-top:6px;"><strong>Nama Inovasi</strong></h5></td>
-                                        <td><input type="text" name="judul" id="inovasi" style="width: 100%;background:whitesmoke;" class="form-control" value="<?php echo $riwayat1['judul'] ?>"></td>
+                                        <td><input type="text" name="judul" id="judul" style="width: 100%;background:whitesmoke;" class="form-control" value="<?php echo $riwayat1['judul'] ?>"></td>
                                     </tr>
                                         <td width="25%"><h5 style="margin-top:6px;"><strong>Kategori</strong></h5></td>
                                         <td><div class="form-group row">
@@ -456,7 +456,9 @@
       <form >
         <div class="container">
             <div class="form-group" align="center" >
-                 <div class="image-artikel" style="background-image: url('https://www.gravatar.com/avatar/101b5695d974ac54d52c9b8f54ea8f86.jpg?s=115&d=monsterid')"></div>
+                <?php foreach ($detail_riwayat as $riwayat1): ?>
+                    <img src="<?php echo base_url().'/uploads/'.$riwayat1['ktp'] ?>" style="width: 400px; height:auto;">
+                <?php endforeach; ?>
             </div>
         </div>
         
@@ -538,13 +540,13 @@
     function cek_data_form1(){
 
         if(document.getElementById("ktp").files.length == 0){
-               var inovasi         = document.getElementById("inovasi").value;
+               var judul           = document.getElementById("judul").value;
                var nama_tim        = document.getElementById("nama_tim").value;
                var nama_ketua      = document.getElementById("nama_ketua").value;
                var email_ketua     = document.getElementById("email_ketua").value;
                var no_hp           = document.getElementById("no_hp").value;
                var alamat_ketua    = document.getElementById("alamat_ketua").value;
-               if (inovasi != "" && nama_tim != "" && nama_ketua != "" && email_ketua != "" && alamat_ketua != "" && no_hp != "") 
+               if (judul != "" && nama_tim != "" && nama_ketua != "" && email_ketua != "" && alamat_ketua != "" && no_hp != "") 
                    {   
                         var kategori = $("input[name='kategori_peserta']:checked").val();
                         if (kategori == 'umum')
@@ -583,6 +585,7 @@
                                 swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
                             }
                          }
+                        //alert(judul);
                    }
                else{
                    swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
@@ -596,13 +599,13 @@
                     // document.getElementById("ktp").focus();
                     swal("Informasi","Ukuran file yang anda upload terlalu besar","info");
                 }else{
-                   var inovasi         = document.getElementById("inovasi").value;
+                   var judul         = document.getElementById("judul").value;
                    var nama_tim        = document.getElementById("nama_tim").value;
                    var nama_ketua      = document.getElementById("nama_ketua").value;
                    var email_ketua     = document.getElementById("email_ketua").value;
                    var no_hp           = document.getElementById("no_hp").value;
                    var alamat_ketua    = document.getElementById("alamat_ketua").value;
-                   if (inovasi != "" && nama_tim != "" && nama_ketua != "" && email_ketua != "" && alamat_ketua != "" && no_hp != "") 
+                   if (judul != "" && nama_tim != "" && nama_ketua != "" && email_ketua != "" && alamat_ketua != "" && no_hp != "") 
                        {   
                             var kategori = $("input[name='kategori_peserta']:checked").val();
                             if (kategori == 'umum')
