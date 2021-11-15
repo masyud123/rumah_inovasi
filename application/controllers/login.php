@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 				$this->load->view('templates_admin/footer');
 			}else{
 				$auth = $this->model_login->cek_login();
-				$data = $this->model_login->cek_login();
+				//$data = $this->model_login->cek_login();
 
 				if($auth == FALSE)
 				{
@@ -44,8 +44,8 @@ class Login extends CI_Controller {
 				}else {
 					$this->session->set_userdata('email',$auth->email);
 					$this->session->set_userdata('hak_akses',$auth->hak_akses);
-					$this->session->set_userdata('nama',$data->nama);
-					$this->session->set_userdata('id_usr',$data->id_usr);
+					$this->session->set_userdata('nama',$auth->nama);
+					$this->session->set_userdata('id_usr',$auth->id_usr);
 
 					switch($auth->hak_akses){
 						case 'Admin_Bappeda' : redirect('admin/dashboard');

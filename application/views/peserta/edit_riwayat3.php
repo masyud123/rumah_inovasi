@@ -50,24 +50,33 @@
                <table align="center" class="table table-borderless table-responsive-xl" style="justify-content: center; width:92%;">
                         <tr >
                             <td hidden="hidden"><input type="text" name="id" value="<?php echo $riwayat3['id_usulan']?>"></td>
-                            <td><h5 style="margin-top:6px;"><strong>Surat Pernyataan</strong></h5></td>
-                            <td width="50%"><input type="file" name="proposal" id="surat" style="width: 100%; height:45px; margin-top: 3px;" class="form-control" accept="application/pdf,"></td>
+                            <td><h5 class="mt-3"><strong>Surat Pernyataan</strong></h5></td>
+                            <td width="50%">
+                                <input type="file" name="proposal" id="surat" style="width: 100%; height:45px;" class="form-control" accept="application/pdf,">
+                                <small class="text-danger color-danger">*Format pdf, ukuran file max 5 mb </small>
+                            </td>
                             <td align="center">
-                                <a style="width:100%;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#proposal_edit"><i class="fas fa-search"></i> <strong>Tampil Surat Pernyataan</strong></a>
+                                <a style="width:100%;" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#proposal_edit"><i class="fas fa-search"></i> <strong>Tampil Surat Pernyataan</strong></a>
                             </td>
                         </tr>
                         <tr>
-                            <td><h5 style="margin-top:6px;"><strong>Dokumen</strong></h5></td>
-                            <td width="50%"><input type="file" name="jurnal" id="jurnal" style="width: 100%; height:45px;" class="form-control" accept="application/pdf," ></td>
+                            <td><h5 class="mt-3"><strong>Dokumen</strong></h5></td>
+                            <td width="50%">
+                                <input type="file" name="jurnal" id="jurnal" style="width: 100%; height:45px;" class="form-control" accept="application/pdf," >
+                                <small class="text-danger color-danger">*Format pdf, ukuran file max 5 mb </small>
+                            </td>
                             <td align="center" class="align-items">
-                                <a style="width:100%;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dokumen_edit"><i class="fas fa-search"></i><strong> Tampil Dokumen</strong></a>
+                                <a style="width:100%;" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#dokumen_edit"><i class="fas fa-search"></i><strong> Tampil Dokumen</strong></a>
                             </td>
                         </tr>
                         <tr>
-                            <td><h5 style="margin-top:6px;"><strong>Gambar</strong></h5></td>
-                            <td width="50%"><input type="file" name="gambar" id="gambar" style="width: 100%; height:45px;" class="form-control" accept="image/png,image/jpeg,image/jpg,application/pdf," ></td>
+                            <td><h5 class="mt-3"><strong>Gambar</strong></h5></td>
+                            <td width="50%">
+                                <input type="file" name="gambar" id="gambar" style="width: 100%; height:45px;" class="form-control" accept="image/png,image/jpeg,image/jpg" >
+                                <small class="text-danger color-danger">*Format jpg/img/png, ukuran file max 5 mb </small>
+                            </td>
                             <td align="center">
-                                <a style="width:100%;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gambar_edit"><i class="fas fa-search"></i> <strong> Tampil Gambar</strong></a>
+                                <a style="width:100%;" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#gambar_edit"><i class="fas fa-search"></i> <strong> Tampil Gambar</strong></a>
                             </td>
                         </tr>
                         <tr>
@@ -274,7 +283,7 @@
                             swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
                         }
                 }else{//cek gambar
-                    if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                    if(document.getElementById("gambar").files[0].type.indexOf("image")==-1){
                         document.getElementById("gambar").focus();
                         swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
                     }else{
@@ -332,7 +341,7 @@
                                     swal("Peringatan","Anda diwajibkan mengisi data dengan lengkap pada halaman ini!","warning");
                                 }
                         }else{ // cek gambar
-                            if(document.getElementById("gambar").files[0].type.indexOf("image") && document.getElementById("gambar").files[0].type.indexOf("application/pdf")==-1){
+                            if(document.getElementById("gambar").files[0].type.indexOf("image")==-1){
                                 document.getElementById("gambar").focus();
                                 swal("Informasi","Format file gambar yang anda upload tidak sesuai. Silahkan upload ulang dengan format yang sudah ditentukan","info");
                             }else{

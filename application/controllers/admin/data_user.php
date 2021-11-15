@@ -38,8 +38,8 @@ class Data_user extends CI_Controller{
 		$email 			= $this->input->post('email');
 		$password		= $this->input->post('password_baru');
 		$satuan_kerja 	= $this->input->post('satuan_kerja');
-		$kecamatan 		= $this->input->post('kecamatan');
-		$hak_akses		= $this->input->post('hak_akses');
+		// $kecamatan 		= $this->input->post('kecamatan');
+		// $hak_akses		= $this->input->post('hak_akses');
 		$status			= $this->input->post('status');
 		$pwd_baru 		= md5($password);
 
@@ -48,8 +48,8 @@ class Data_user extends CI_Controller{
 				'nama' 			=> $nama, 
 				'email' 		=> $email,
 				'satuan_kerja' 	=> $satuan_kerja,
-				'kecamatan' 	=> $kecamatan, 
-				'hak_akses' 	=> $hak_akses,
+				// 'kecamatan' 	=> $kecamatan, 
+				// 'hak_akses' 	=> $hak_akses,
 				'status' 		=> $status,
 			);
 		}else{
@@ -69,8 +69,8 @@ class Data_user extends CI_Controller{
 					'email' 		=> $email,
 					'password'		=> $pwd_baru,
 					'satuan_kerja' 	=> $satuan_kerja,
-					'kecamatan' 	=> $kecamatan, 
-					'hak_akses' 	=> $hak_akses,
+					// 'kecamatan' 	=> $kecamatan, 
+					// 'hak_akses' 	=> $hak_akses,
 					'status' 		=> $status,
 				);
 			}

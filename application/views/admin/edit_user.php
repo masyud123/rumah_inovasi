@@ -8,14 +8,14 @@
 			<div class= "row ">
 				<dt for="inputNama" class="col-sm-2 col-form-label">Nama</dt>
 				<div class="col-sm-5 mb-3">
-					<input type="text" name="nama" class="form-control" value="<?php echo $usr->nama ?>" >
+					<input id="nama" type="text" name="nama" class="form-control" value="<?php echo $usr->nama ?>" >
 				</div>
 			</div>
 
 			<div class= "row">
 				<dt for="inputEmail" class="col-sm-2 col-form-label">Email</dt>
 				<div class="col-sm-5 mb-3">
-					<input type="email" name="email" class="form-control" value="<?php echo $usr->email ?>" >
+					<input id="email" type="email" name="email" class="form-control" value="<?php echo $usr->email ?>" >
 				</div>
 			</div>
 
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row" hidden>
             <dt for="inputSatKer" class="col-sm-2 col-form-label">Satuan Kerja</dt>
 	            <div class="col-sm-5 mb-3">
 		            <select class="form-control" name="satuan_kerja">
@@ -63,7 +63,7 @@
 		        </div>
           	</div>
 
-          	<div class="row">
+          	<div class="row" hidden>
             <dt for="inputKecamatan" class="col-sm-2 col-form-label">Kecamatan</dt>
 	            <div class="col-sm-5 mb-3">
 		            <select class="form-control" name="kecamatan" value="<?php echo $usr->kecamatan ?>">
@@ -122,36 +122,43 @@
       $('#btn_new_pwd').show();
       $('input[name="password_baru"]').val('');
       $('#show-password').prop('checked', false);
+      $('#password_baru').attr('type', 'password');
    }
 
    function cek_pwd()
    {
-      var data = document.getElementById("new_pwd");
-      if (data.style.display=="none"){
-         document.getElementById("update_user_profil").submit();
+      var nama = document.getElementById("nama").value;
+      var email = document.getElementById("email").value;
+      if (nama == "" || email == "") {
+      	$('#input_kosong').appendTo('body').modal('show');
       }else{
-         var myInput = document.getElementById("password_baru");
-         if (myInput.value == "") {
-            //document.getElementById("password_baru").focus();
-            $('#modal_kosong').appendTo('body').modal('show');
-            //$('#password_baru').focus();
-         }else{
-            var lowerCaseLetters = /[a-z]/g; // huruf kecil
-            var upperCaseLetters = /[A-Z]/g; // huruf besar
-            var numbers = /[0-9]/g; // angka
+      	var data = document.getElementById("new_pwd");
+	      if (data.style.display=="none"){
+	         document.getElementById("update_user_profil").submit();
+	      }else{
+	         var myInput = document.getElementById("password_baru");
+	         if (myInput.value == "") {
+	            //document.getElementById("password_baru").focus();
+	            $('#modal_kosong').appendTo('body').modal('show');
+	            //$('#password_baru').focus();
+	         }else{
+	            var lowerCaseLetters = /[a-z]/g; // huruf kecil
+	            var upperCaseLetters = /[A-Z]/g; // huruf besar
+	            var numbers = /[0-9]/g; // angka
 
-            if( myInput.value.match(lowerCaseLetters) && 
-               myInput.value.match(upperCaseLetters) && 
-               myInput.value.match(numbers) &&
-               myInput.value.length >= 8){ 
-               document.getElementById("update_user_profil").submit();
-            } else {
-               document.getElementById("password_baru").focus();
-               //alert("Password harus lebih dari 8 karakter, mengandung huruf BESAR, huruf kecil dan angka");
-               $('#modal_karakter').appendTo('body').modal('show');
-            }
-         }
-      }
+	            if( myInput.value.match(lowerCaseLetters) && 
+	               myInput.value.match(upperCaseLetters) && 
+	               myInput.value.match(numbers) &&
+	               myInput.value.length >= 8){ 
+	               document.getElementById("update_user_profil").submit();
+	            } else {
+	               document.getElementById("password_baru").focus();
+	               //alert("Password harus lebih dari 8 karakter, mengandung huruf BESAR, huruf kecil dan angka");
+	               $('#modal_karakter').appendTo('body').modal('show');
+	            }
+	         }
+	      }
+	   }
    }
 
    function fokus()
@@ -160,13 +167,27 @@
    }
 </script>
 
+<!-- Modal input kosong-->
+<div class="modal fade" id="input_kosong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+   	<div class="modal-content">
+   		<div class="modal-body text-center ">
+   			<i class="fas fa-info-circle fa-lg fa-6x mt-4 mb-5" style="color:skyblue;"></i>
+   			<h3 class="mb-3"><strong>INFORMASI</strong></h3>
+   			<h5 class="mb-3 ml-3 mr-3">Anda harus mengisi dengan lengkap pada halaman ini!</h5>
+   			<button onblur="fokus()" class="btn btn-lg btn-primary col-2 mb-2" data-dismiss="modal" ><strong>OK</strong></button>
+	   	</div>
+		</div>
+	</div>
+</div>
+
 <!-- Modal Kosong-->
 <div class="modal fade" id="modal_kosong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
    	<div class="modal-content">
    		<div class="modal-body text-center">
    			<!-- <i class="fas fa-info-circle fa-lg fa-6x mt-4 mb-5" style="color:skyblue;"></i> -->
-   			<span class="fa-stack fa-lg fa-4x mt-4 mb-4 fa-spin fa-fw" style="color: skyblue;">
+   			<span class="fa-stack fa-lg fa-4x mt-4 mb-4" style="color: skyblue;">
 				  <i class="far fa-circle fa-stack-2x"></i>
 				  <i class="fas fa-info fa-stack-1x"></i>
 				</span>
